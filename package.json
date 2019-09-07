@@ -1,6 +1,6 @@
 {
   "name": "tiny-polling",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": "git@github.com:dericgw/tiny-polling.git",
   "author": "Deric Cain <deric.cain@gmail.com>",
   "license": "MIT",
