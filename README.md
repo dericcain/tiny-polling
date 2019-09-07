@@ -2,7 +2,7 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/dericgw/tiny-polling/badge.svg?branch=master)](https://coveralls.io/github/dericgw/tiny-polling?branch=master)
 
-🎯 A very tiny (~370B) solution for polling
+🎯A very tiny (~370B) solution for polling that is offline aware
 
 ## Features
 - It's small, of course

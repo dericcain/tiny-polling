@@ -1,9 +1,18 @@
 {
   "name": "tiny-polling",
   "version": "1.0.1",
+  "description": "A very tiny (~370B) solution for polling that is offline aware",
   "repository": "git@github.com:dericgw/tiny-polling.git",
   "author": "Deric Cain <deric.cain@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "poll",
+    "polling",
+    "sockets",
+    "poller",
+    "interval",
+    "timeout"
+  ],
   "main": "dist/index.js",
   "module": "dist/tiny-polling.esm.js",
   "typings": "dist/index.d.ts",
