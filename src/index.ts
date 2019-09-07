@@ -3,24 +3,17 @@ interface PollingType {
   stop: () => void;
 }
 
-export function Polling(
-  serviceToPoll: () => void = () => {},
-  intervalInSeconds: number = 10
-): PollingType {
-  let isEnabled: boolean = true;
+export function Polling(serviceToPoll: () => void, intervalInSeconds: number = 10): PollingType {
   let timer: number = 0;
   const interval: number = intervalInSeconds * 1000;
 
   function start() {
-    if (isEnabled) {
-      timer = window.setInterval(serviceToPoll, interval);
-      watchNetworkConnection();
-    }
+    timer = window.setInterval(serviceToPoll, interval);
+    watchNetworkConnection();
   }
 
   function stop(manuallyStop = true) {
     clearInterval(timer);
-    isEnabled = !manuallyStop;
 
     if (manuallyStop) {
       window.removeEventListener('offline', waitForNetworkConnection);

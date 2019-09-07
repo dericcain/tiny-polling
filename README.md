@@ -2,10 +2,10 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/dericgw/tiny-polling/badge.svg?branch=master)](https://coveralls.io/github/dericgw/tiny-polling?branch=master)
 
-🎯A very tiny (~370B) solution for polling that is offline aware
+🎯A very tiny (~200B) solution for polling that is offline aware
 
 ## Features
-- It's small, of course
+- It's tiny, of course (~200B)
 - Polls any function you pass to it at the specific interval you pass to it
 - Online/Offline aware so it stops polling when offline and starts back when online
 - Written in TypeScript so you get good autocompletion

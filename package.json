@@ -1,7 +1,7 @@
 {
   "name": "tiny-polling",
   "version": "1.0.2",
-  "description": "A very tiny (~370B) solution for polling that is offline aware",
+  "description": "A very tiny (~200B) solution for polling that is offline aware",
   "repository": "git@github.com:dericgw/tiny-polling.git",
   "author": "Deric Cain <deric.cain@gmail.com>",
   "license": "MIT",
