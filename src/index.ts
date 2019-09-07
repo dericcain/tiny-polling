@@ -1,39 +1,45 @@
-export class Polling {
-  private timer: number = 0;
+interface PollingType {
+  start: () => void;
+  stop: () => void;
+}
 
-  private isEnabled = true;
+export function Polling(
+  serviceToPoll: () => void = () => {},
+  intervalInSeconds: number = 10
+): PollingType {
+  let isEnabled: boolean = true;
+  let timer: number = 0;
+  const interval: number = intervalInSeconds * 1000;
 
-
-  public constructor(private serviceToPoll: () => void = () => {}, private intervalInSeconds: number = 10) {}
-
-  public get interval() {
-    return this.intervalInSeconds * 1000;
+  function start() {
+    if (isEnabled) {
+      timer = window.setInterval(serviceToPoll, interval);
+      watchNetworkConnection();
+    }
   }
 
-  public start = () => {
-    if (this.isEnabled) {
-      this.timer = window.setInterval(this.serviceToPoll, this.interval);
-      this.watchNetworkConnection();
-    }
-  };
-
-  public stop = ( manuallyStop = true ) => {
-    clearInterval(this.timer);
-    this.isEnabled = !manuallyStop;
+  function stop(manuallyStop = true) {
+    clearInterval(timer);
+    isEnabled = !manuallyStop;
 
     if (manuallyStop) {
-      window.removeEventListener('offline', this.waitForNetworkConnection);
-      window.removeEventListener('online', this.start);
+      window.removeEventListener('offline', waitForNetworkConnection);
+      window.removeEventListener('online', start);
     }
-  };
+  }
 
-  private watchNetworkConnection = () => {
-    window.addEventListener('offline', this.waitForNetworkConnection);
-    window.removeEventListener('online', this.start);
-  };
+  function watchNetworkConnection() {
+    window.addEventListener('offline', waitForNetworkConnection);
+    window.removeEventListener('online', start);
+  }
 
-  private waitForNetworkConnection = () => {
-    this.stop(false);
-    window.addEventListener('online', this.start);
+  function waitForNetworkConnection() {
+    stop(false);
+    window.addEventListener('online', start);
+  }
+
+  return {
+    start,
+    stop,
   };
 }

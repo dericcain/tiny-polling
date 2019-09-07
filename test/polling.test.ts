@@ -7,7 +7,7 @@ describe('Polling', () => {
 
   test('should execute the passed in method when the specified interval is reached', () => {
     const mockService = jest.fn();
-    const poll = new Polling(mockService, 5);
+    const poll = Polling(mockService, 5);
     poll.start();
 
     jest.advanceTimersByTime(seconds(6));
@@ -17,7 +17,7 @@ describe('Polling', () => {
 
   test('should stop polling when the "stop" method is called', () => {
     const mockService = jest.fn();
-    const poll = new Polling(mockService);
+    const poll = Polling(mockService);
     poll.start();
 
     jest.advanceTimersByTime(seconds(5));
@@ -29,7 +29,7 @@ describe('Polling', () => {
 
   test('should stop polling when there is no network connection', () => {
     const mockService = jest.fn();
-    const poll = new Polling(mockService);
+    const poll = Polling(mockService);
 
     poll.start();
 
@@ -45,7 +45,7 @@ describe('Polling', () => {
 
   test('should start polling once the network connection becomes available', () => {
     const mockService = jest.fn();
-    const poll = new Polling(mockService);
+    const poll = Polling(mockService);
 
     poll.start();
 
@@ -66,7 +66,7 @@ describe('Polling', () => {
 
   test('should allow a custom interval to be passed in', () => {
     const mockService = jest.fn();
-    const poll = new Polling(mockService, 5);
+    const poll = Polling(mockService, 5);
     poll.start();
 
     jest.advanceTimersByTime(seconds(6));
